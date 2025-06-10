@@ -19,9 +19,29 @@ const Hero: React.FC = () => {
           <h1 className="text-5xl font-bold mb-4">
             Welcome to Launchpad React Template
           </h1>
-          <p className="text-xl mb-8">
-            A modern full-stack template for building React applications
-          </p>
+          <h2 className="text-3xl font-bold mb-6">
+            "Hello World" Branch
+          </h2>
+          <div className="max-w-2xl mx-auto">
+            <p className="text-xl mb-4">
+              Basic app setup with frontend routing and essential components.
+            </p>
+            <div className="text-left bg-blue-700/30 p-6 rounded-lg mb-8 font-mono">
+              <p className="mb-2 font-semibold">Template Evolution:</p>
+              <p className="mb-2 font-semibold">
+                ├── hello-world      # Just frontend + routing
+              </p>
+              <p className="mb-2 font-semibold">
+                ├── layout-added     # Layout components introduced
+              </p>
+              <p className="mb-2 font-semibold">
+                ├── auth-oauth       # OAuth login added
+              </p>
+              <p className="mb-2 font-semibold">
+                └── full-dashboard   # CRM, calendar, etc.
+              </p>
+            </div>
+          </div>
           <div className="space-x-4">
             <button 
               onClick={handleGetStarted}

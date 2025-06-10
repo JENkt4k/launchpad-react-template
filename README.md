@@ -1,6 +1,6 @@
 # README.md
 
-# Launchpad React Template
+# Launchpad React Template - Hello World
 
 Welcome to the Launchpad React Template! This project is a full-stack monorepo that combines a Node.js backend with a React frontend, designed to help you kickstart your development.
 
