@@ -49,10 +49,27 @@ git clone -b hello-world https://github.com/JENkt4k/launchpad-react-template.git
 git clone -b auth-oauth https://github.com/JENkt4k/launchpad-react-template.git
 ```
 
-2. Start the application:
-```bash
-docker-compose up --build
+### Starting the Application
+
+1. Choose your Docker profile:
+
+```powershell
+# Run both frontend and backend
+docker-compose --profile docker up --build
+
+# Run only backend (for local frontend development)
+docker-compose --profile local up --build
 ```
+
+Available profiles:
+- `docker`: Runs both frontend and backend services
+- `local`: Runs only the backend service
+
+2. Access the application:
+- Frontend: http://localhost:3300
+- Backend API: http://localhost:4001
+
+For detailed Docker configuration options, see [Docker Configuration](./docs/DockerRuntimeConfiguration.md).
 
 ## Documentation
 
