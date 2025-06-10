@@ -1,16 +1,22 @@
 import express from 'express';
-import { setRoutes } from './routes/index';
+import { registerRoutes } from './routes/index';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Set up routes
-setRoutes(app);
+// Register routes
+registerRoutes(app);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Start server
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
+
+export default app;

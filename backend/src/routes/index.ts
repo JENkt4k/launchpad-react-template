@@ -1,6 +1,6 @@
-export const setRoutes = (app) => {
-    const indexController = new IndexController();
+import { Application } from 'express';
+import { IndexController } from '../controllers/index';
 
-    app.get('/', indexController.index);
-    app.get('/api/example', indexController.example);
+export const registerRoutes = (app: Application): void => {
+    app.get('/', IndexController.getIndex);
 };

@@ -1,29 +1,37 @@
 version: '3.8'
 
 services:
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3300:3300"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_PORT=3300
+      - VITE_API_URL=http://localhost:4001/api
+    command: npm run dev -- --host --port 3300
+    depends_on:
+      - backend
+    networks:
+      - launchpad-network
+
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "5000:5000"
-    env_file:
-      - ./backend/.env.example
+      - "4001:4001"
     volumes:
       - ./backend:/app
-    networks:
-      - launchpad-network
-
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    env_file:
-      - ./frontend/.env.example
-    volumes:
-      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - PORT=4001
+      - NODE_ENV=development
     networks:
       - launchpad-network
 
