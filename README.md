@@ -29,7 +29,18 @@ launchpad-react-template/
 
 ## Quick Start
 
-1. Choose your starting point:
+### Option 1: Using CLI (Recommended)
+```bash
+# Create new project using CLI
+npx create-app-template --framework react --branch hello-world --include auth-oauth,generators
+```
+
+This command:
+- Creates a new project using React
+- Starts from the hello-world branch
+- Includes auth-oauth and generators modules
+
+### Option 2: Manual Clone
 ```bash
 # Clone the basic version
 git clone -b hello-world https://github.com/JENkt4k/launchpad-react-template.git
