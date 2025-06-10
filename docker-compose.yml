@@ -8,17 +8,23 @@ services:
     ports:
       - "3300:3300"
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - type: bind
+        source: ./frontend
+        target: /app
+      - type: volume
+        source: node_modules
+        target: /app/node_modules
     environment:
       - NODE_ENV=development
       - VITE_PORT=3300
       - VITE_API_URL=http://localhost:4001/api
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    profiles:
+      - docker
     command: npm run dev -- --host --port 3300
     depends_on:
       - backend
-    networks:
-      - launchpad-network
 
   backend:
     build:
@@ -32,9 +38,13 @@ services:
     environment:
       - PORT=4001
       - NODE_ENV=development
-    networks:
-      - launchpad-network
+    profiles:
+      - docker
+      - local
 
 networks:
-  launchpad-network:
-    driver: bridge
+  default:
+    name: launchpad-network
+
+volumes:
+  node_modules:
