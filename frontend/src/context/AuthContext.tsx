@@ -1,18 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { User } from '../../../modules/auth-oauth/types/auth.types';
 
 // Vite provides import.meta.env types automatically, no need to redeclare them
 
 interface AuthContextType {
-  user: any | null;
+  user: User | null;
   loading: boolean;
-  login: (provider: string) => void;
-  logout: () => void;
+  login: (provider: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<any | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   const login = async (provider: string) => {
