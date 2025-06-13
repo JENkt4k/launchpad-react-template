@@ -29,16 +29,57 @@ launchpad-react-template/
 
 ## Quick Start
 
-### Option 1: Using CLI (Recommended)
+### Option 1: Using CLI
+
+#### Development Setup (Current)
 ```bash
-# Create new project using CLI
-npx create-app-template --framework react --branch hello-world --include auth-oauth,generators
+# Clone the repository
+git clone https://github.com/JENkt4k/create-app-template.git
+
+# Install dependencies
+cd create-app-template
+npm install
+
+# Link for local development
+npm link
+
+# Now you can run from anywhere
+create-app-template --framework react --branch hello-world --directory my-app
+```
+
+#### Common Usage Patterns
+
+1. Create New Project with Modules
+```bash
+# Create new project with specific module branch
+npx create-app-template@latest \
+  --framework react \
+  --branch hello-world \
+  --include auth-oauth \
+  --module-branch auth-oauth \
+  --directory my-new-app
 ```
 
 This command:
-- Creates a new project using React
-- Starts from the hello-world branch
-- Includes auth-oauth and generators modules
+- Creates a new project from hello-world branch
+- Includes auth-oauth module
+- Uses matching module branch version
+- Creates project in my-new-app directory
+
+2. Add Module to Existing Project
+```bash
+# From your project directory
+npx create-app-template@latest \
+  --framework react \
+  --include auth-oauth \
+  --module-branch auth-oauth \
+  --directory .
+```
+
+This command:
+- Adds auth-oauth module to current project
+- Uses specified module branch version
+- Maintains existing project structure
 
 ### Option 2: Manual Clone
 ```bash
