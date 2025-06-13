@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    // ...other options
+    "types": ["vite/client"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"]
+}
